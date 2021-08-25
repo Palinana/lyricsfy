@@ -1,0 +1,59 @@
+{
+  "name": "lyricsify",
+  "version": "2.0.0",
+  "engines": {
+    "node": ">= 7.0.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "build-client-watch": "webpack -w",
+    "server": "nodemon server/index.js",
+    "client": "cd client && npm run start",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "start-dev": "NODE_ENV='development' npm run build-client-watch & NODE_ENV='development' npm run start-server",
+    "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
+    "test": "NODE_ENV='test' mocha \"./server/**/*.spec.js\" \"./client/**/*.spec.js\" \"./script/**/*.spec.js\" --require @babel/polyfill --require @babel/register",
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "prettier --write",
+      "npm run lint-fix",
+      "git add"
+    ],
+    "*.{css,scss,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "author": "Palina",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "compression": "^1.7.3",
+    "concurrently": "^6.2.1",
+    "cookie-parser": "1.3.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.16.4",
+    "express-session": "^1.15.1",
+    "morgan": "^1.9.1",
+    "node-fetch": "^2.6.0",
+    "node-html-parser": "^1.2.5",
+    "pg": "^7.9.0",
+    "pg-hstore": "^2.3.2",
+    "querystring": "~0.2.0",
+    "react-html-parser": "^2.0.2",
+    "request": "~2.34.0",
+    "spotify-web-api-js": "^0.22.1"
+  },
+  "devDependencies": {
+    "mocha": "^6.1.4",
+    "nodemon": "^1.18.3",
+    "prettier": "1.11.1",
+    "react-test-renderer": "^16.4.2",
+    "supertest": "^4.0.2",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.1.0"
+  }
+}
