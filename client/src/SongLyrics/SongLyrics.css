@@ -1,0 +1,99 @@
+.song-lyrics__container {
+    display: flex;
+    margin: 0 auto;
+    padding: 3rem;
+}
+
+.song-lyrics__left-panel,
+.song-lyrics__right-panel {
+    width: 50%;
+    order: 1;
+}
+
+/*  side with image */
+.song-lyrics__left-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.song-lyrics__image {
+    text-align: center;
+    /* padding: 5rem; */
+    width: 75%;
+}
+  
+.song-lyrics__image img {
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+/*  side with lyrics */
+.song-lyrics__right-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* padding: 2rem; */
+    order: 2;
+}
+
+.song-lyrics__info,
+.song-lyrics__info-lyrics {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.song-lyrics__info { 
+    padding-bottom: 1rem;
+}
+
+.song-lyrics__info-lyrics {
+    height: 60vh;
+    overflow-y: auto;
+    /* padding: 1rem; */
+    padding: 1rem 4rem 1rem 1rem;
+    font-size: 1.5em;
+    line-height: 1.5em;
+}
+
+.song-lyrics__info-lyrics::-webkit-scrollbar {
+    background-color: #3b3c3e;
+    width: 5px;
+}
+
+.song-lyrics__info-lyrics::-webkit-scrollbar-thumb {
+    background:#E9E8DE; 
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+    .song-lyrics__container  {
+        flex-direction: column;
+    }
+
+    .song-lyrics__left-panel,
+    .song-lyrics__right-panel {
+        width: 100%;
+    }
+
+    .song-lyrics__left-panel{
+        margin-bottom: 2rem;
+    }
+
+    .song-lyrics__image {
+        width: 50%;
+    }
+
+    .song-lyrics__info-lyrics {
+        padding: 1rem;
+    }
+
+    .song-lyrics__info-lyrics::-webkit-scrollbar,
+    .song-lyrics__info-lyrics::-webkit-scrollbar-thumb {
+        display: none;
+    }
+}

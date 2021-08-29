@@ -48,7 +48,7 @@ import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import './App.css';
 import Auth from './Auth';
 
-import CurrentlyPlaying from './CurrentlyPlaying';
+import CurrentlyPlaying from './CurrentlyPlaying/CurrentlyPlaying';
 import SpotifyWebApi from 'spotify-web-api-js';
 const spotifyApi = new SpotifyWebApi();
 
@@ -72,10 +72,8 @@ class App extends Component {
   }
 
   getHashParams() {
-    var hashParams = {};
-    var e, r = /([^&;=]+)=?([^&;]*)/g,
-        // q = window.location.hash.substring(1).slice(1);
-        // console.log('window.location.hash.substring(1)', window.location.hash.substring(1))
+    const hashParams = {};
+    let e, r = /([^&;=]+)=?([^&;]*)/g,
         q = window.location.pathname.substring(1);
         console.log('window q ', q)
     e = r.exec(q)
@@ -103,23 +101,21 @@ class App extends Component {
       );
     }
 
-
     return (
-      <div className='app'>
-        {this.state.loggedIn ? (
-          <div>
-            <CurrentlyPlaying  token={this.state.token}/>
-            {routes}
-          </div>
-        ) : (
-          <div>
-            <a href='http://localhost:8888/login' > Login to Spotify </a>
-          </div>
-        )}
-      </div>
+        <div className='app'>
+            {this.state.loggedIn ? (
+                <div>
+                  <CurrentlyPlaying  token={this.state.token}/>
+                  {routes}
+                </div>
+            ) : (
+                <div>
+                  <a href='http://localhost:8888/login' > Login to Spotify </a>
+                </div>
+            )}
+        </div>
     )
   }
 }
 
-// export default App;
 export default withRouter(App)
